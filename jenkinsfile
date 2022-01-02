@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Before Install') {
             steps {
-                withCredentials([file(credentialsID:'GC_KEY',variable:'GC_KEY')]){
+                //withCredentials([file(credentialsID:'GC_KEY',variable:'GC_KEY')]){
                     echo 'Before installing..'
                     sh 'curl https://sdk.cloud.google.com | bash > /dev/null;'
                     sh 'source $HOME/google-cloud-sdk/path.bash.inc'
@@ -24,7 +24,7 @@ pipeline {
                     sh 'gcloud container clusters get-credentials multi-cluster'
                     sh 'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME --password-stdin'
                     sh 'docker build -t nicoleow/react-test -f ./client/Dockerfile.dev ./client'
-                }
+                //}
             }
         }
         stage('Test') {
