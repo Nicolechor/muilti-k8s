@@ -15,20 +15,17 @@ pipeline {
             steps {
                 //withCredentials([file(credentialsID:'GC_KEY',variable:'GC_KEY')]){
                     echo 'Before installing..'
-                    sh 'curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-367.0.0-linux-x86_64.tar.gz'
-                    sh 'tar -xvf /tmp/google-cloud-sdk.tar.gz -C /tmp/;'
-                    sh '/tmp/google-cloud-sdk/install.sh -q;'
-                    //sh 'curl https://sdk.cloud.google.com | bash > /dev/null;'
+                    sh 'curl https://sdk.cloud.google.com | bash > /dev/null;'
                     echo 'curl done'
                     sh 'source $HOME/google-cloud-sdk/path.bash.inc'
                     echo 'source done'
-                    sh 'gcloud components update kubectl'
-                    sh 'gcloud auth activate-service-account --key-file ${GC_KEY}'
-                    sh 'gcloud config set project multi-k8s-336912'
-                    sh 'gcloud config set compute/zone 	us-central1-c'
-                    sh 'gcloud container clusters get-credentials multi-cluster'
-                    sh 'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME --password-stdin'
-                    sh 'docker build -t nicoleow/react-test -f ./client/Dockerfile.dev ./client'
+                    // sh 'gcloud components update kubectl'
+                    // sh 'gcloud auth activate-service-account --key-file ${GC_KEY}'
+                    // sh 'gcloud config set project multi-k8s-336912'
+                    // sh 'gcloud config set compute/zone 	us-central1-c'
+                    // sh 'gcloud container clusters get-credentials multi-cluster'
+                    // sh 'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME --password-stdin'
+                    // sh 'docker build -t nicoleow/react-test -f ./client/Dockerfile.dev ./client'
                 //}
             }
         }
