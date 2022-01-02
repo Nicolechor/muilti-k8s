@@ -15,8 +15,7 @@ pipeline {
             steps {
                 //withCredentials([file(credentialsID:'GC_KEY',variable:'GC_KEY')]){
                     echo 'Before installing..'
-                    sh 'find ~/Library/Caches/ -type d -name "google-cloud-sdk" | xargs rm -r'
-                    sh 'curl https://sdk.cloud.google.com | bash'
+                    sh 'curl https://sdk.cloud.google.com | rm -rf "$HOME/google-cloud-sdk" | bash > /dev/null;'
                     echo 'curl done'
                     sh 'source $HOME/google-cloud-sdk/path.bash.inc'
                     echo 'source done'
