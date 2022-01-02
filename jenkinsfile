@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Before Install') {
             steps {
-                withCredentials([file(credentialsID:'',variable:'GC_KEY')]){
+                withCredentials([file(credentialsID:'GC_KEY',variable:'GC_KEY')]){
                     echo 'Before installing..'
                     sh 'curl https://sdk.cloud.google.com | bash > /dev/null;'
                     sh 'source $HOME/google-cloud-sdk/path.bash.inc'
