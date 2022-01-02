@@ -16,7 +16,9 @@ pipeline {
                 //withCredentials([file(credentialsID:'GC_KEY',variable:'GC_KEY')]){
                     echo 'Before installing..'
                     sh 'curl https://sdk.cloud.google.com | bash > /dev/null;'
+                    echo 'curl done'
                     sh 'source $HOME/google-cloud-sdk/path.bash.inc'
+                    echo 'source done'
                     sh 'gcloud components update kubectl'
                     sh 'gcloud auth activate-service-account --key-file ${GC_KEY}'
                     sh 'gcloud config set project multi-k8s-336912'
