@@ -18,7 +18,7 @@ pipeline {
                     sh 'curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-367.0.0-linux-x86_64.tar.gz'
                     //sh 'curl https://sdk.cloud.google.com | bash > /dev/null;'
                     echo 'curl done'
-                    //sh 'source $HOME/google-cloud-sdk/path.bash.inc'
+                    sh 'source $HOME/google-cloud-sdk/path.bash.inc'
                     echo 'source done'
                     sh 'gcloud components update kubectl'
                     sh 'gcloud auth activate-service-account --key-file ${GC_KEY}'
